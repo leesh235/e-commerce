@@ -1,18 +1,24 @@
 package com.ecommerce.server.api.auth;
 
+import com.ecommerce.server.dto.authDto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class authController {
 
-    @GetMapping("/login")
+    @PostMapping("/signup")
     @ResponseBody
-    public String login(@RequestParam("name") String name){
-        System.out.println("gdgdgd");
-        System.out.println(name);
+    public ResponseEntity<?> signUp(@RequestBody authDto.signUpDto dto){
+        System.out.println(dto);
+        return ResponseEntity.ok().body("");
+    }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public String logIn(@RequestBody String name){
+
         return "hello" + name;
     }
 
