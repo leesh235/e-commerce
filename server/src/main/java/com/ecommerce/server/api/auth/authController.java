@@ -2,21 +2,19 @@ package com.ecommerce.server.api.auth;
 
 import com.ecommerce.server.dto.authDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RequestMapping("/auth")
+@RestController
 public class authController {
 
     @PostMapping("/signup")
-    @ResponseBody
-    public ResponseEntity<?> signUp(@RequestBody authDto.signUpDto dto){
-        System.out.println(dto);
-        return ResponseEntity.ok().body("");
+    public ResponseEntity<?> signUp(@RequestBody authDto.signUpDto dto) throws Exception{
+
+        return ResponseEntity.ok().body("success");
     }
 
     @PostMapping("/login")
-    @ResponseBody
     public String logIn(@RequestBody String name){
 
         return "hello" + name;
