@@ -3,7 +3,7 @@ package com.ecommerce.server.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-public class authDto {
+public class AuthDto {
 
     @Getter
     @AllArgsConstructor

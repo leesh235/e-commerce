@@ -1,4 +1,4 @@
-package com.ecommerce.server.api.auth;
+package com.ecommerce.server.service;
 
 import org.springframework.stereotype.Service;
 
