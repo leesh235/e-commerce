@@ -1,16 +1,22 @@
 package com.ecommerce.server.dto;
 
+import com.ecommerce.server.domain.AuthDomain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 public class AuthDto {
 
     @Getter
-    @AllArgsConstructor
     public static class signUpDto{
         private String email;
         private String name;
         private String password;
+
+        public signUpDto(AuthDomain authDomain){
+            this.email = authDomain.getEmail();
+            this.name = authDomain.getName();
+            this.password = authDomain.getPassword();
+        }
     }
 
     @Getter

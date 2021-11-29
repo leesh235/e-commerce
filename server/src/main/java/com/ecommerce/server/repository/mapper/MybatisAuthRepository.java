@@ -5,23 +5,19 @@ import com.ecommerce.server.repository.AuthRepository;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+/*
+*  mabatis용 repository
+*  mapper.xml과 연동되는 곳, 주로 interface로 구성되며 DAO라고함(repository로도 사용가능)
+* */
 @Mapper
 @Repository
-public class MybatisAuthRepository implements AuthRepository {
-
-    @Override
-    public AuthDomain Save(AuthDomain authDomain) {
-        return null;
-    }
-
-    @Override
-    public AuthDomain modify(AuthDomain authDomain) {
-        return null;
-    }
-
-    @Override
-    public AuthDomain delete(AuthDomain authDomain) {
-        return null;
-    }
+public interface MybatisAuthRepository extends AuthRepository {
+    List<AuthDomain> SelectAll();
+    AuthDomain Select();
+    AuthDomain Save(AuthDomain authDomain);
+    AuthDomain Modify(AuthDomain authDomain);
+    AuthDomain Delete(AuthDomain authDomain);
 
 }
