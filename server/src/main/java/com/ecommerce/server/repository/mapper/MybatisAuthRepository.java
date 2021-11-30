@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /*
 *  mabatis용 repository
@@ -14,9 +15,10 @@ import java.util.List;
 @Mapper
 @Repository
 public interface MybatisAuthRepository extends AuthRepository {
+
     List<AuthDomain> SelectAll();
-    AuthDomain Select();
-    AuthDomain Save(AuthDomain authDomain);
+    AuthDomain Select(AuthDomain authDomain);
+    void Save(AuthDomain authDomain);
     AuthDomain Modify(AuthDomain authDomain);
     AuthDomain Delete(AuthDomain authDomain);
 

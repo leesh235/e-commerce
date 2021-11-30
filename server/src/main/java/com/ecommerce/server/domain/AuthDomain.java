@@ -9,7 +9,6 @@ import lombok.*;
 * */
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +18,15 @@ public class AuthDomain {
     private String name;
     private String password;
 
-//    public void patchData(AuthDto.signUpDto authDto){
-//        this.email = authDto.getEmail();
-//        this.name = authDto.getName();
-//        this.password = authDto.getPassword();
-//    }
+    public void patchSignUpData(AuthDto.signUpDto dto){
+        this.email = dto.getEmail() != "" ? dto.getEmail() : this.email;
+        this.name = dto.getName() != "" ? dto.getName() : this.name;
+        this.password = dto.getPassword() != "" ? dto.getPassword() : this.password;
+    }
+
+    public void patchLogInData(AuthDto.logInDto dto){
+        this.email = dto.getEmail() != "" ? dto.getEmail() : this.email;
+        this.password = dto.getPassword() != "" ? dto.getPassword() : this.password;
+    }
 
 }
