@@ -24,4 +24,9 @@ public class AuthController {
         return ResponseEntity.ok().body(authService.logIn(dto));
     }
 
+    @GetMapping("/test")
+    public String test() throws Exception{
+        return "test";
+    }
+
 }
