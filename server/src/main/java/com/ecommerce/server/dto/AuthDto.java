@@ -1,10 +1,10 @@
 package com.ecommerce.server.dto;
 
 import com.ecommerce.server.domain.AuthDomain;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
 
 public class AuthDto {
 
@@ -18,11 +18,13 @@ public class AuthDto {
     }
 
     @Getter
+    @Setter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class logInDto{
         private String email;
         private String password;
+        private Collection<? extends GrantedAuthority> authorities;
     }
 
     @Getter
@@ -33,6 +35,18 @@ public class AuthDto {
             this.email = authDomain.getEmail();
             this.name = authDomain.getName();
         }
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class tokenDto{
+        private String grantType;
+        private String accessToken;
+        private String refreshToken;
+        private long accessTokenExpiresIn;
     }
 
 }
