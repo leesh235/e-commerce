@@ -12,7 +12,7 @@
     <insert id="Save" parameterType="com.ecommerce.server.domain.AuthDomain">
         insert into user(email, name, password) value(#{email}, #{name}, #{password})
     </insert>
-    <select id="Select" parameterType="com.ecommerce.server.domain.AuthDomain" resultType="com.ecommerce.server.domain.AuthDomain">
-        select email, name from user where email=#{email}
+    <select id="Select" parameterType="String" resultType="com.ecommerce.server.domain.AuthDomain">
+        select userId, email, name, password, authority from user where email=#{email}
     </select>
 </mapper>
