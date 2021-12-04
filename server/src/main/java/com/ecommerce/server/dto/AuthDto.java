@@ -24,17 +24,6 @@ public class AuthDto {
     public static class logInDto{
         private String email;
         private String password;
-        private Collection<? extends GrantedAuthority> authorities;
-    }
-
-    @Getter
-    public static class userLogInDto{
-        private String email;
-        private String name;
-        public userLogInDto(AuthDomain authDomain){
-            this.email = authDomain.getEmail();
-            this.name = authDomain.getName();
-        }
     }
 
     @Getter

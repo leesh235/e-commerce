@@ -9,24 +9,21 @@ import lombok.*;
 * */
 
 @Getter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class AuthDomain {
 
+    private Long userId;
     private String email;
     private String name;
     private String password;
+    private String authority;
 
-    public void patchSignUpData(AuthDto.signUpDto dto){
-        this.email = dto.getEmail() != "" ? dto.getEmail() : this.email;
-        this.name = dto.getName() != "" ? dto.getName() : this.name;
-        this.password = dto.getPassword() != "" ? dto.getPassword() : this.password;
-    }
-
-    public void patchLogInData(AuthDto.logInDto dto){
-        this.email = dto.getEmail() != "" ? dto.getEmail() : this.email;
-        this.password = dto.getPassword() != "" ? dto.getPassword() : this.password;
+    @Builder
+    public AuthDomain(String email, String name, String password, String authority){
+        this.email = email != "" ? email : "";
+        this.name = name != "" ? name : "";
+        this.password = password != "" ? password : "";
+        this.authority = authority != "" ? authority : "";
     }
 
 }
