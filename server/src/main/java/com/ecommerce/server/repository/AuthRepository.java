@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface AuthRepository {
 
     List<AuthDomain> SelectAll();
-    AuthDomain Select(AuthDomain authDomain);
+    Optional<AuthDomain> Select(String email);
     void Save(AuthDomain authDomain);
     AuthDomain Modify(AuthDomain authDomain);
     AuthDomain Delete(AuthDomain authDomain);
