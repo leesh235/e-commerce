@@ -40,7 +40,6 @@ public class TokenProvider {
 
     //토큰생성
     public AuthDto.tokenDto generateTokenDto(Authentication authentication){
-        System.out.println("authentication: " + authentication);
         //권한 가져오기
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -94,7 +93,7 @@ public class TokenProvider {
 
     public boolean validateToken(String token){
         try{
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJwt(token);
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
             log.info("잘못된 JWT 서명입니다.");
