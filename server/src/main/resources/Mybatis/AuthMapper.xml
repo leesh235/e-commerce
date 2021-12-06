@@ -6,8 +6,8 @@
     namespace -> mapping할 repository or DAO의 위치
 -->
 <mapper namespace="com.ecommerce.server.dao.AuthDao">
-    <insert id="Save" parameterType="com.ecommerce.server.dto.AuthDto$signUpDto">
-        insert into user(email, name, password) value(#{email}, #{name}, #{password})
+    <insert id="Save" parameterType="com.ecommerce.server.dto.AuthDto$signUpRequestDto">
+        insert into user(email, name, password, authority) value(#{email}, #{name}, #{password}, "USER")
     </insert>
     <select id="Select" parameterType="String" resultType="com.ecommerce.server.dto.AuthDto$logInResponseDto">
         select userId, email, name, password, authority from user where email=#{email}

@@ -19,6 +19,6 @@ public interface AuthDao {
     Optional<AuthDto.logInResponseDto> Select(String email);
 
     //회원가입
-    void Save(AuthDto.signUpRequestDto dto);
+    int Save(AuthDto.signUpRequestDto dto);
 
 }

@@ -18,7 +18,6 @@ public class AuthService {
     private final TokenProvider tokenProvider;
 
     public void signUp(AuthDto.signUpRequestDto dto){
-//        AuthDomain authDomain = new AuthDomain(dto.getEmail(), dto.getName(), dto.getPassword(), "USER");
         authDao.Save(dto);
     }
 
