@@ -1,4 +1,4 @@
-package com.ecommerce.server.jwt;
+package com.ecommerce.server.common.jwt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

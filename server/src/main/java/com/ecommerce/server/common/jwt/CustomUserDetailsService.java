@@ -1,7 +1,7 @@
-package com.ecommerce.server.jwt;
+package com.ecommerce.server.common.jwt;
 
-import com.ecommerce.server.domain.AuthDomain;
-import com.ecommerce.server.repository.mapper.MybatisAuthRepository;
+import com.ecommerce.server.dao.AuthDao;
+import com.ecommerce.server.dto.AuthDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,7 +18,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final MybatisAuthRepository mybatisAuthRepository;
+    private final AuthDao mybatisAuthRepository;
 
     //db에서 존재여부를 확인 후 userdetails 객체로 반환
     @Override
@@ -30,13 +30,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     //userdetails 객체 생성
-    private UserDetails createUserDetails(AuthDomain authDomain){
-        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authDomain.getAuthority().toString());
+    private UserDetails createUserDetails(AuthDto.logInResponseDto dto){
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(dto.getAuthority().toString());
 
         User user = new User(
-                String.valueOf(authDomain.getUserId()),
+                String.valueOf(dto.getUserId()),
                 //security version up에 따라 패스워드 앞에 "{noop}"을 붙여줘야한다
-                "{noop}" + authDomain.getPassword(),
+                "{noop}" + dto.getPassword(),
                 Collections.singleton(grantedAuthority));
 
         return user;

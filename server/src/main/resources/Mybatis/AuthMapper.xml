@@ -5,14 +5,11 @@
 <!--
     namespace -> mapping할 repository or DAO의 위치
 -->
-<mapper namespace="com.ecommerce.server.repository.mapper.MybatisAuthRepository">
-    <select id="SelectAll" resultType="com.ecommerce.server.domain.AuthDomain">
-        select email from user
-    </select>
-    <insert id="Save" parameterType="com.ecommerce.server.domain.AuthDomain">
+<mapper namespace="com.ecommerce.server.dao.AuthDao">
+    <insert id="Save" parameterType="com.ecommerce.server.dto.AuthDto$signUpDto">
         insert into user(email, name, password) value(#{email}, #{name}, #{password})
     </insert>
-    <select id="Select" parameterType="String" resultType="com.ecommerce.server.domain.AuthDomain">
+    <select id="Select" parameterType="String" resultType="com.ecommerce.server.dto.AuthDto$logInResponseDto">
         select userId, email, name, password, authority from user where email=#{email}
     </select>
 </mapper>

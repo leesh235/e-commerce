@@ -1,7 +1,5 @@
-package com.ecommerce.server.jwt;
+package com.ecommerce.server.common.jwt;
 
-import com.ecommerce.server.jwt.JwtFilter;
-import com.ecommerce.server.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

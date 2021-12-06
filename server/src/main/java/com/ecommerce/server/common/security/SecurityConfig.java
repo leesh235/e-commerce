@@ -1,9 +1,9 @@
-package com.ecommerce.server.security;
+package com.ecommerce.server.common.security;
 
-import com.ecommerce.server.jwt.JwtAccessDeniedHandler;
-import com.ecommerce.server.jwt.JwtAuthenticationEntryPoint;
-import com.ecommerce.server.jwt.JwtSecurityConfig;
-import com.ecommerce.server.jwt.TokenProvider;
+import com.ecommerce.server.common.jwt.JwtAccessDeniedHandler;
+import com.ecommerce.server.common.jwt.JwtAuthenticationEntryPoint;
+import com.ecommerce.server.common.jwt.JwtSecurityConfig;
+import com.ecommerce.server.common.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;

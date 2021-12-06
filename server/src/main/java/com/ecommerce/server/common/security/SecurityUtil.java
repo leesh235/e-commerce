@@ -1,4 +1,4 @@
-package com.ecommerce.server.security;
+package com.ecommerce.server.common.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

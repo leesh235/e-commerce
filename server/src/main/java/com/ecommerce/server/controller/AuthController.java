@@ -14,13 +14,13 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody AuthDto.signUpDto dto) throws Exception{
+    public ResponseEntity<?> signUp(@RequestBody AuthDto.signUpRequestDto dto) throws Exception{
         authService.signUp(dto);
         return ResponseEntity.ok().body("success");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> logIn(@RequestBody AuthDto.logInDto dto) throws Exception{
+    public ResponseEntity<?> logIn(@RequestBody AuthDto.logInRequestDto dto) throws Exception{
         return ResponseEntity.ok().body(authService.logIn(dto));
     }
 

@@ -1,7 +1,6 @@
-package com.ecommerce.server.jwt;
+package com.ecommerce.server.common.jwt;
 
 import com.ecommerce.server.dto.AuthDto;
-import com.ecommerce.server.dto.UserDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
