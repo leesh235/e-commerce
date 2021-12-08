@@ -18,7 +18,7 @@ public class AuthService {
     private final TokenProvider tokenProvider;
 
     public void signUp(AuthDto.signUpRequestDto dto){
-        authDao.Save(dto);
+        authDao.save(dto);
     }
 
     public AuthDto.tokenDto logIn(AuthDto.logInRequestDto dto){

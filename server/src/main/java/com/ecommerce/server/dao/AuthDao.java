@@ -4,7 +4,6 @@ import com.ecommerce.server.dto.AuthDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 /*
@@ -15,10 +14,16 @@ import java.util.Optional;
 @Repository
 public interface AuthDao {
 
-    //아이디 중복 검증
-    Optional<AuthDto.logInResponseDto> Select(String email);
-
     //회원가입
-    int Save(AuthDto.signUpRequestDto dto);
+    int save(AuthDto.signUpRequestDto dto);
+
+    //유저 권한 저장
+    int saveAuthority();
+
+    //아이디 중복 검증
+    Optional<AuthDto.logInResponseDto> findEmail(String email);
+
+    //유저 권한 검색
+    AuthDto.userAuthority findAuthority(int user_id);
 
 }

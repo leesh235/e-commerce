@@ -18,13 +18,13 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final AuthDao mybatisAuthRepository;
+    private final AuthDao authDao;
 
     //db에서 존재여부를 확인 후 userdetails 객체로 반환
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-        return mybatisAuthRepository.Select(email)
+        return authDao.findEmail(email)
                 .map(this::createUserDetails)
                 .orElseThrow(() -> new UsernameNotFoundException(email + "-> 데이터베이스에서 찾을 수 없습니다."));
     }
