@@ -18,12 +18,12 @@ public interface AuthDao {
     int save(AuthDto.signUpRequestDto dto);
 
     //유저 권한 저장
-    int saveAuthority();
+    int saveAuthority(long userId);
 
     //아이디 중복 검증
     Optional<AuthDto.logInResponseDto> findEmail(String email);
 
     //유저 권한 검색
-    AuthDto.userAuthority findAuthority(int user_id);
+    AuthDto.userAuthority findAuthority(long userId);
 
 }

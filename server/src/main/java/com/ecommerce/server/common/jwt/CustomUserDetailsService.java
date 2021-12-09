@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     //userdetails 객체 생성
     private UserDetails createUserDetails(AuthDto.logInResponseDto dto){
-        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(dto.getAuthority().toString());
+        GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(authDao.findAuthority(dto.getUserId()).getAuthority());
 
         User user = new User(
                 String.valueOf(dto.getUserId()),

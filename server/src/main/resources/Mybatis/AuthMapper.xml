@@ -9,14 +9,20 @@
     <insert id="save" parameterType="com.ecommerce.server.dto.AuthDto$signUpRequestDto">
         insert into users(email, name, password, birthday, phone, email_verify, phone_verify, email_check, phone_check)
         value(#{email}, #{name}, #{password}, #{birthday}, #{phone}, #{emailVerify}, #{phoneVerify}, #{emailCheck}, #{phoneCheck})
+        <selectKey keyProperty="userId" resultType="int" order="AFTER">
+            select user_id from users
+        </selectKey>
     </insert>
-    <insert id="saveAuthority" parameterType="com.ecommerce.server.dto.AuthDto$signUpRequestDto">
-        insert into user_role(user_id) select user_id from users where email=#{email}
+
+    <insert id="saveAuthority" parameterType="long">
+        insert into user_role(user_id) value(#{userId})
     </insert>
-    <select id="findEmail" parameterType="String" resultType="com.ecommerce.server.dto.AuthDto$logInResponseDto">
-        select userId, email, name, password, from users where email=#{email}
+
+    <select id="findEmail" parameterType="string" resultType="com.ecommerce.server.dto.AuthDto$logInResponseDto">
+        select user_id as userId, email, name, password from users where email=#{email};
     </select>
-    <select id="findAuthority" parameterType="int" resultType="com.ecommerce.server.dto.AuthDto$logInResponseDto">
-        select authority from user where user_id=#{user_id}
+
+    <select id="findAuthority" parameterType="long" resultType="com.ecommerce.server.dto.AuthDto$userAuthority">
+        select role as authority from user_role where user_id=#{userId}
     </select>
 </mapper>

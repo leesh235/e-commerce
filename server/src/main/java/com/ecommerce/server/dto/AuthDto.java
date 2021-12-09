@@ -9,6 +9,7 @@ public class AuthDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class signUpRequestDto{
+        private long userId;
         private String email;
         private String name;
         private String password;
@@ -44,16 +45,19 @@ public class AuthDto {
 
     @Getter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class logInResponseDto{
-        private Long userId;
+        private long userId;
         private String email;
         private String name;
         private String password;
-        private String authority;
     }
 
     @Getter
     @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class userAuthority{
         private String authority;
     }
