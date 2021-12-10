@@ -19,8 +19,10 @@ public class AuthService {
     private final TokenProvider tokenProvider;
 
     public void signUp(AuthDto.signUpRequestDto dto){
-        authDao.save(dto);
-        authDao.saveAuthority(dto.getUserId());
+        if(!authDao.findEmail(dto.getEmail()).isPresent()){
+            authDao.save(dto);
+            authDao.saveAuthority(dto.getUserId());
+        };
     }
 
     public AuthDto.tokenDto logIn(AuthDto.logInRequestDto dto){
