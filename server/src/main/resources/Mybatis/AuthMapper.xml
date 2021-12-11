@@ -10,7 +10,7 @@
         insert into users(email, name, password, birthday, phone, email_verify, phone_verify, email_check, phone_check)
         value(#{email}, #{name}, #{password}, #{birthday}, #{phone}, #{emailVerify}, #{phoneVerify}, #{emailCheck}, #{phoneCheck})
         <selectKey keyProperty="userId" resultType="int" order="AFTER">
-            select user_id from users
+            select LAST_INSERT_ID()
         </selectKey>
     </insert>
 
