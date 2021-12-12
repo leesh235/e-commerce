@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace -> mapping할 repository or DAO의 위치
+-->
+<mapper namespace="com.ecommerce.server.dao.UserDao">
+    <select id="findUser" parameterType="_long" resultType="com.ecommerce.server.dto.UserDto$myProfileResponseDto">
+        select
+        email,
+        name,
+        birthday,
+        phone,
+        join_date as joinDate,
+        email_check as emailCheck,
+        phone_check as phoneCheck,
+        join_type as joinType
+        from users where user_id=#{userId}
+    </select>
+</mapper>
