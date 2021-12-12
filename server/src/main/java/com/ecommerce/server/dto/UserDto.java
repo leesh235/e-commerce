@@ -9,6 +9,19 @@ public class UserDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
+    public static class modifyProfileDto{
+        private long userId;
+        private String name;
+        private Date birthday;
+        private String phone;
+        private boolean emailCheck;
+        private boolean phoneCheck;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class myProfileResponseDto{
         private String email;
         private String name;
@@ -18,6 +31,16 @@ public class UserDto {
         private String joinType;
         private boolean emailCheck;
         private boolean phoneCheck;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class unregisterDto{
+        private long userId;
+        private String password;
     }
 
 }

@@ -12,8 +12,34 @@ public class UserService {
 
     private final UserDao userDao;
 
-    public UserDto.myProfileResponseDto getMyProfile(){
+    public UserDto.myProfileResponseDto getProfile(){
         return userDao.findUser(SecurityUtil.getCurrentMemberId());
+    }
+
+    public boolean modifyProfile(UserDto.modifyProfileDto dto){
+        UserDto.modifyProfileDto user = UserDto.modifyProfileDto.builder()
+                .userId(SecurityUtil.getCurrentMemberId())
+                .name(dto.getName())
+                .birthday(dto.getBirthday())
+                .phone(dto.getPhone())
+                .emailCheck(dto.isEmailCheck())
+                .phoneCheck(dto.isPhoneCheck())
+                .build();
+        if(userDao.modifyUser(user) > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean unregister(UserDto.unregisterDto dto){
+        UserDto.unregisterDto user = UserDto.unregisterDto.builder().userId(SecurityUtil.getCurrentMemberId()).password(dto.getPassword()).build();
+
+        if(userDao.deleteUser(user) > 0) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }
