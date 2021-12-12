@@ -35,6 +35,20 @@ public class AuthDto {
     }
 
     @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class emailDto{
+        private String email;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class phoneDto{
+        private String phone;
+    }
+
+    @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor

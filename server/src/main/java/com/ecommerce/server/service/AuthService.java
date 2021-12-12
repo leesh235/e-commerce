@@ -18,14 +18,29 @@ public class AuthService {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final TokenProvider tokenProvider;
 
-    public void signUp(AuthDto.signUpRequestDto dto){
+    public boolean checkEmail(AuthDto.emailDto dto){
         if(!authDao.findEmail(dto.getEmail()).isPresent()){
-            authDao.save(dto);
-            authDao.saveAuthority(dto.getUserId());
-        };
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    public AuthDto.tokenDto logIn(AuthDto.logInRequestDto dto){
+    public void checkPhone(AuthDto.phoneDto dto){
+        //핸드폰인증 로직
+    }
+
+    public boolean signUp(AuthDto.signUpRequestDto dto){
+        if(!authDao.findEmail(dto.getEmail()).isPresent()) {
+            authDao.save(dto);
+            authDao.saveAuthority(dto.getUserId());
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public AuthDto.tokenDto logIn(AuthDto.logInRequestDto dto) throws UsernameNotFoundException{
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(dto.getEmail(), dto.getPassword());
 
         Authentication authentication =
