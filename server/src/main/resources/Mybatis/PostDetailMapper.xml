@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecommerce.server.dao.PostDetailDaoDao">
+    <select id="findId" parameterType="_long" resultType="com.ecommerce.server.dto.PostDetailDto$postResponseDto">
+        select
+            title,
+            contents_url as postUrl,
+            create_date as createdDate,
+            writer,
+            comment_count as commentCnt,
+            like_count as likeCnt
+        from posts where post_id=#{postId}
+    </select>
+    <insert id="save" parameterType="com.ecommerce.server.dto.PostDetailDto$writeDto">
+        insert into posts(title, category, writer, postUrl) value()
+    </insert>
+</mapper>
