@@ -1,5 +1,6 @@
 package com.ecommerce.server.service;
 
+import com.ecommerce.server.common.security.SecurityUtil;
 import com.ecommerce.server.dao.PostDetailDao;
 import com.ecommerce.server.dto.PostDetailDto;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,15 @@ public class PostDetailService {
     }
 
     public void writePost(PostDetailDto.writeDto dto){
-        postDetailDao.save(dto);
+        PostDetailDto.writeDto post = PostDetailDto.writeDto.builder()
+                .category(dto.getCategory())
+                .postUrl("fileServer")
+                .writer(postDetailDao.findWriter(SecurityUtil.getCurrentMemberId()).getWriter())
+                .userId(SecurityUtil.getCurrentMemberId())
+                .title(dto.getTitle())
+                .build();
+
+       postDetailDao.save(post);
     }
 
     public void modifyPost(PostDetailDto.modifyDto dto){

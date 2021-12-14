@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostDetailDao {
 
+    //작성자 불러오기
+    PostDetailDto.writeDto findWriter(long userId);
+
     //게시글 불러오기
     PostDetailDto.postResponseDto findId(long postId);
 
@@ -19,7 +22,5 @@ public interface PostDetailDao {
 
     //게시글 삭제
     int delete(PostDetailDto.deleteDto dto);
-
-
 
 }

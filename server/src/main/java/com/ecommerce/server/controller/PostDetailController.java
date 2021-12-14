@@ -14,7 +14,9 @@ public class PostDetailController {
     private final PostDetailService postDetailService;
 
     @GetMapping("/detail")
-    public ResponseEntity<?> detail(@RequestParam("postId") PostDetailDto.postRequestDto dto){
+    public ResponseEntity<?> detail(@RequestParam("postId") String postId){
+        Integer data = Integer.valueOf(postId);
+        PostDetailDto.postRequestDto dto = PostDetailDto.postRequestDto.builder().postId(data).build();
         return ResponseEntity.ok().body(postDetailService.getPost(dto));
     }
 
