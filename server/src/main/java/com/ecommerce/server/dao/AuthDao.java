@@ -14,8 +14,11 @@ import java.util.Optional;
 @Repository
 public interface AuthDao {
 
-    //회원가입
-    int save(AuthDto.signUpRequestDto dto);
+    //소비자 회원가입
+    int saveConsumer(AuthDto.consumerDto dto);
+
+    //판매자 회원가입
+    int saveSeller(AuthDto.sellerDto dto);
 
     //유저 권한 저장
     int saveAuthority(long userId);

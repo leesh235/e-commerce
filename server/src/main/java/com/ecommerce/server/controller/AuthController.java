@@ -14,9 +14,15 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> signUp(@RequestBody AuthDto.signUpRequestDto dto) throws Exception{
-        authService.signUp(dto);
+    @PostMapping("/signup-consumer")
+    public ResponseEntity<?> signUpConsumer(@RequestBody AuthDto.consumerDto dto) throws Exception{
+        authService.signUpConsumer(dto);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/signup-seller")
+    public ResponseEntity<?> signUpSeller(@RequestBody AuthDto.sellerDto dto) throws Exception{
+        authService.signUpSeller(dto);
         return ResponseEntity.ok().build();
     }
 

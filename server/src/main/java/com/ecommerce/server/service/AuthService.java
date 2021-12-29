@@ -30,9 +30,19 @@ public class AuthService {
         //핸드폰인증 로직
     }
 
-    public boolean signUp(AuthDto.signUpRequestDto dto){
+    public boolean signUpConsumer(AuthDto.consumerDto dto){
         if(!authDao.findEmail(dto.getEmail()).isPresent()) {
-            authDao.save(dto);
+            authDao.saveConsumer(dto);
+            authDao.saveAuthority(dto.getUserId());
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean signUpSeller(AuthDto.sellerDto dto){
+        if(!authDao.findEmail(dto.getEmail()).isPresent()) {
+            authDao.saveSeller(dto);
             authDao.saveAuthority(dto.getUserId());
             return true;
         }else{

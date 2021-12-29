@@ -8,18 +8,27 @@ public class AuthDto {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class signUpRequestDto{
+    public static class consumerDto{
         private long userId;
         private String email;
         private String name;
         private String password;
-        private Date birthday;
+        private long birthday;
         private String phone;
-        private boolean emailVerify;
-        private boolean phoneVerify;
-        private boolean emailCheck;
-        private boolean phoneCheck;
-        private String status;
+        private String sex;
+    }
+
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class sellerDto{
+        private long userId;
+        private String email;
+        private String name;
+        private String password;
+        private String phone;
+        private String companyNumber;
+        private String companyName;
     }
 
     @Getter
