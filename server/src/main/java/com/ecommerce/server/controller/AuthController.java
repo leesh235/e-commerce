@@ -31,14 +31,14 @@ public class AuthController {
         return ResponseEntity.ok().body(authService.logIn(dto));
     }
 
-    @PostMapping("/check-email")
-    public ResponseEntity<?> checkEmail(@RequestBody AuthDto.emailDto dto) throws Exception{
-        return ResponseEntity.ok().body(authService.checkEmail(dto));
-    }
-
-    @PostMapping("/check-phone")
-    public ResponseEntity<?> checkPhone(@RequestBody AuthDto.phoneDto dto) throws Exception{
-        return ResponseEntity.ok().body("아직 구현되지 않음");
-    }
+//    @PostMapping("/check-email")
+//    public ResponseEntity<?> checkEmail(@RequestBody AuthDto.emailDto dto) throws Exception{
+//        return ResponseEntity.ok().body(authService.checkEmail(dto));
+//    }
+//
+//    @PostMapping("/check-phone")
+//    public ResponseEntity<?> checkPhone(@RequestBody AuthDto.phoneDto dto) throws Exception{
+//        return ResponseEntity.ok().body("아직 구현되지 않음");
+//    }
 
 }

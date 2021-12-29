@@ -17,8 +17,12 @@ public interface AuthDao {
     //소비자 회원가입
     int saveConsumer(AuthDto.consumerDto dto);
 
+    int saveConsumerInfo(AuthDto.consumerDto dto);
+
     //판매자 회원가입
     int saveSeller(AuthDto.sellerDto dto);
+
+    int saveSellerInfo(AuthDto.sellerDto dto);
 
     //유저 권한 저장
     int saveAuthority(long userId);

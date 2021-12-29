@@ -26,14 +26,15 @@ public class AuthService {
         }
     }
 
-    public void checkPhone(AuthDto.phoneDto dto){
-        //핸드폰인증 로직
-    }
+//    public void checkPhone(AuthDto.phoneDto dto){
+//        //핸드폰인증 로직
+//    }
 
     public boolean signUpConsumer(AuthDto.consumerDto dto){
         if(!authDao.findEmail(dto.getEmail()).isPresent()) {
             authDao.saveConsumer(dto);
             authDao.saveAuthority(dto.getUserId());
+            authDao.saveConsumerInfo(dto);
             return true;
         }else{
             return false;
@@ -44,6 +45,7 @@ public class AuthService {
         if(!authDao.findEmail(dto.getEmail()).isPresent()) {
             authDao.saveSeller(dto);
             authDao.saveAuthority(dto.getUserId());
+            authDao.saveSellerInfo(dto);
             return true;
         }else{
             return false;

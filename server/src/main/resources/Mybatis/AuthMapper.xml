@@ -6,20 +6,28 @@
     namespace -> mapping할 repository or DAO의 위치
 -->
 <mapper namespace="com.ecommerce.server.dao.AuthDao">
-    <insert id="saveConsumer" parameterType="com.ecommerce.server.dto.consumerDto">
-        insert into users(email, name, password, birthday, phone, email_verify, phone_verify, email_check, phone_check)
-        value(#{email}, #{name}, #{password}, #{birthday}, #{phone}, #{emailVerify}, #{phoneVerify}, #{emailCheck}, #{phoneCheck})
+    <insert id="saveConsumer" parameterType="com.ecommerce.server.dto.AuthDto$consumerDto">
+        insert into users(email, name, password, phone, join_date, birth, sex, email_flag, phone_flag)
+        value(#{email}, #{name}, #{password}, #{phone}, now(), #{birthday}, #{sex}, #{emailCheck}, #{phoneCheck})
         <selectKey keyProperty="userId" resultType="int" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
     </insert>
 
-    <insert id="saveSeller" parameterType="com.ecommerce.server.dto.sellerDto">
-        insert into users(email, name, password, birthday, phone, email_verify, phone_verify, email_check, phone_check)
-        value(#{email}, #{name}, #{password}, #{birthday}, #{phone}, #{emailVerify}, #{phoneVerify}, #{emailCheck}, #{phoneCheck})
+    <insert id="saveConsumerInfo" parameterType="com.ecommerce.server.dto.AuthDto$consumerDto">
+        insert into customer(user_id, email_ad_flag, phone_ad_flag) value(#{userId}, #{emailAd}, #{phoneAd})
+    </insert>
+
+    <insert id="saveSeller" parameterType="com.ecommerce.server.dto.AuthDto$sellerDto">
+        insert into users(email, name, password, phone, join_date, birth, sex, email_flag, phone_flag)
+        value(#{email}, #{name}, #{password}, #{phone}, now(), #{birthday}, #{sex}, #{emailCheck}, #{phoneCheck})
         <selectKey keyProperty="userId" resultType="int" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
+    </insert>
+
+    <insert id="saveSellerInfo" parameterType="com.ecommerce.server.dto.AuthDto$sellerDto">
+        insert into seller(user_id, company_name, company_number) value(#{userId}, #{companyName}, #{companyNumber})
     </insert>
 
     <insert id="saveAuthority" parameterType="long">

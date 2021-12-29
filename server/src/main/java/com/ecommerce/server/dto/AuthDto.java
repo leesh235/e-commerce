@@ -13,9 +13,13 @@ public class AuthDto {
         private String email;
         private String name;
         private String password;
-        private long birthday;
         private String phone;
+        private String birthday;
         private String sex;
+        private boolean emailCheck;
+        private boolean phoneCheck;
+        private boolean emailAd;
+        private boolean phoneAd;
     }
 
     @Getter
@@ -27,6 +31,10 @@ public class AuthDto {
         private String name;
         private String password;
         private String phone;
+        private String birthday;
+        private String sex;
+        private boolean emailCheck;
+        private boolean phoneCheck;
         private String companyNumber;
         private String companyName;
     }
