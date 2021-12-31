@@ -10,7 +10,7 @@
         select
         u.email,
         u.name,
-        u.birth,
+        u.birth as birthday,
         u.sex,
         u.phone,
         u.join_date as joinDate,
@@ -23,27 +23,23 @@
         join customer as c
         on u.user_id=#{userId} and c.user_id=#{userId}
     </select>
+
     <update id="modifyUser" parameterType="com.ecommerce.server.dto.UserDto$modifyProfileDto">
-        update users
+        update users as u inner join customer as c on u.user_id=c.user_id
             <set>
                 <if test="name != null and name != ''">
-                    name=#{name}
+                    u.name=#{name}
                 </if>
-                <if test="birthday != null and birthday != ''">
-                    birthday=#{birthday}
+                <if test="emailAd != null and emailAd != ''">
+                    c.email_ad_flag=#{emailAd}
                 </if>
-                <if test="phone != null and phone != ''">
-                    phone=#{phone}
-                </if>
-                <if test="emailCheck != null and emailCheck != ''">
-                    email_check=#{emailCheck}
-                </if>
-                <if test="phoneCheck != null and phoneCheck != ''">
-                    phone_check=#{phoneCheck}
+                <if test="phoneAd != null and phoneAd != ''">
+                    c.phone_ad_flag=#{phoneAd}
                 </if>
             </set>
-        where user_id=#{userId}
+        where u.user_id=#{userId} and c.user_id
     </update>
+
     <delete id="deleteUser" parameterType="com.ecommerce.server.dto.UserDto$unregisterDto">
         delete from users where user_id=#{userId} and password=#{password}
     </delete>

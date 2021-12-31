@@ -20,10 +20,8 @@ public class UserService {
         UserDto.modifyProfileDto user = UserDto.modifyProfileDto.builder()
                 .userId(SecurityUtil.getCurrentMemberId())
                 .name(dto.getName())
-                .birthday(dto.getBirthday())
-                .phone(dto.getPhone())
-                .emailCheck(dto.isEmailCheck())
-                .phoneCheck(dto.isPhoneCheck())
+                .emailAd(dto.isEmailAd())
+                .phoneAd(dto.isPhoneAd())
                 .build();
         if(userDao.modifyUser(user) > 0) {
             return true;
