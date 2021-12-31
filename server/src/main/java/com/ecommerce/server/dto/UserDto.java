@@ -22,15 +22,18 @@ public class UserDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class myProfileResponseDto{
+    public static class profileDto{
         private String email;
         private String name;
-        private Date birthday;
+        private String birthday;
+        private String sex;
         private Date joinDate;
         private String phone;
         private String joinType;
         private boolean emailCheck;
         private boolean phoneCheck;
+        private boolean emailAd;
+        private boolean phoneAd;
     }
 
     @Getter

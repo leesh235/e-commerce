@@ -12,7 +12,7 @@ public class UserService {
 
     private final UserDao userDao;
 
-    public UserDto.myProfileResponseDto getProfile(){
+    public UserDto.profileDto getProfile(){
         return userDao.findUser(SecurityUtil.getCurrentMemberId());
     }
 

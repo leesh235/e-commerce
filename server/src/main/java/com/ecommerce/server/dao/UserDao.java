@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface UserDao {
 
     //유저 정보 가져오기
-    UserDto.myProfileResponseDto findUser(long userId);
+    UserDto.profileDto findUser(long userId);
 
     //유저 정보 변경
     int modifyUser(UserDto.modifyProfileDto dto);

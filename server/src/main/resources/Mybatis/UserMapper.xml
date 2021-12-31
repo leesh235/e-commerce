@@ -6,17 +6,22 @@
     namespace -> mapping할 repository or DAO의 위치
 -->
 <mapper namespace="com.ecommerce.server.dao.UserDao">
-    <select id="findUser" parameterType="_long" resultType="com.ecommerce.server.dto.UserDto$myProfileResponseDto">
+    <select id="findUser" parameterType="_long" resultType="com.ecommerce.server.dto.UserDto$profileDto">
         select
-        email,
-        name,
-        birthday,
-        phone,
-        join_date as joinDate,
-        email_check as emailCheck,
-        phone_check as phoneCheck,
-        join_type as joinType
-        from users where user_id=#{userId}
+        u.email,
+        u.name,
+        u.birth,
+        u.sex,
+        u.phone,
+        u.join_date as joinDate,
+        u.email_flag as emailCheck,
+        u.phone_flag as phoneCheck,
+        u.join_type as joinType,
+        c.email_ad_flag as emailAd,
+        c.phone_ad_flag as phoneAd
+        from users as u
+        join customer as c
+        on u.user_id=#{userId} and c.user_id=#{userId}
     </select>
     <update id="modifyUser" parameterType="com.ecommerce.server.dto.UserDto$modifyProfileDto">
         update users
