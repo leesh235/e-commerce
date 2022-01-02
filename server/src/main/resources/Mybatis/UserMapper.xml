@@ -25,7 +25,7 @@
     </select>
 
     <update id="modifyUser" parameterType="com.ecommerce.server.dto.UserDto$modifyProfileDto">
-        update users as u inner join customer as c on u.user_id=c.user_id
+        update users as u join customer as c on u.user_id=c.user_id
             <set>
                 <if test="name != null and name != ''">
                     u.name=#{name}
