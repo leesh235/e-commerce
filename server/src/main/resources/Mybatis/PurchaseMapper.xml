@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ecommerce.server.dao.UserDao">
+    <select id="findUser" parameterType="_long" resultType="com.ecommerce.server.dto.UserDto$profileDto">
+        select
+        u.email,
+        u.name,
+        u.birth as birthday,
+        u.sex,
+        u.phone,
+        u.join_date as joinDate,
+        u.email_flag as emailCheck,
+        u.phone_flag as phoneCheck,
+        u.join_type as joinType,
+        c.email_ad_flag as emailAd,
+        c.phone_ad_flag as phoneAd
+        from users as u
+        join customer as c
+        on u.user_id=#{userId} and c.user_id=#{userId}
+    </select>
+</mapper>
