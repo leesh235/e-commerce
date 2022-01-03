@@ -22,27 +22,29 @@ public class UserService {
                 .name(dto.getName())
                 .emailAd(dto.isEmailAd())
                 .phoneAd(dto.isPhoneAd())
+                .password(dto.getPassword())
+                .confirmPassword(dto.getConfirmPassword())
                 .build();
-        if(userDao.modifyUser(user) > 0) {
-            return true;
+
+        if(dto.getPassword().equals(dto.getConfirmPassword())){
+            if(userDao.modifyUser(user) > 0) {
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
     }
 
-    public boolean modifyPassword(UserDto.modifyPassword dto){
-        UserDto.modifyPassword user = UserDto.modifyPassword.builder()
+    public boolean confirmUser(UserDto.confirmUser dto){
+        UserDto.confirmUser user = UserDto.confirmUser.builder()
                 .userId(SecurityUtil.getCurrentMemberId())
-                .currentPassword(dto.getCurrentPassword())
-                .nextPassword(dto.getNextPassword())
-                .confirmPassword(dto.getConfirmPassword())
+                .password(dto.getPassword())
                 .build();
-        if(dto.getNextPassword().equals(dto.getConfirmPassword())){
-            if(userDao.modifyPassword(user) > 0) {
-                return true;
-            }else{
-                return false;
-            }
+
+        if(userDao.confirmPassword(user) == SecurityUtil.getCurrentMemberId()) {
+            return true;
         }else{
             return false;
         }

@@ -14,8 +14,8 @@ public interface UserDao {
     //유저 정보 변경
     int modifyUser(UserDto.modifyProfileDto dto);
 
-    //유저 정보 변경
-    int modifyPassword(UserDto.modifyPassword dto);
+    //비밀번호로 본인확인
+    int confirmPassword(UserDto.confirmUser dto);
 
     //회원탈퇴 **다른 테이블 fk에 cascade설정 할 것
     int deleteUser(UserDto.unregisterDto dto);

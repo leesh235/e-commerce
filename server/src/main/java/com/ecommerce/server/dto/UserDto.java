@@ -33,6 +33,8 @@ public class UserDto {
         private String name;
         private boolean emailAd;
         private boolean phoneAd;
+        private String password;
+        private String confirmPassword;
     }
 
     @Getter
@@ -45,6 +47,16 @@ public class UserDto {
         private String currentPassword;
         private String nextPassword;
         private String confirmPassword;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class confirmUser{
+        private long userId;
+        private String password;
     }
 
     @Getter

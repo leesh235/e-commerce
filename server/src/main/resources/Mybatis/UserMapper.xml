@@ -30,6 +30,9 @@
                 <if test="name != null and name != ''">
                     u.name=#{name},
                 </if>
+                <if test="password != null and password != ''">
+                    u.password=#{password},
+                </if>
                 <if test="emailAd != null and emailAd != ''">
                     c.email_ad_flag=#{emailAd},
                 </if>
@@ -40,15 +43,9 @@
         where u.user_id=#{userId} and c.user_id=#{userId}
     </update>
 
-    <update id="modifyPassword" parameterType="com.ecommerce.server.dto.UserDto$modifyPassword">
-        update users
-        <set>
-            <if test="name != null and name != ''">
-                password=#{nextPassword},
-            </if>
-        </set>
-        where user_id=#{userId} and password=#{currentPassword}
-    </update>
+    <select id="confirmPassword" parameterType="com.ecommerce.server.dto.UserDto$modifyPassword" resultType="integer">
+        select user_id from users where user_id=#{userId} and password=#{password}
+    </select>
 
     <delete id="deleteUser" parameterType="com.ecommerce.server.dto.UserDto$unregisterDto">
         delete from users where user_id=#{userId} and password=#{password}
