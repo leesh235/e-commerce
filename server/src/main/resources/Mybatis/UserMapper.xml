@@ -28,16 +28,16 @@
         update users as u join customer as c on u.user_id=c.user_id
             <set>
                 <if test="name != null and name != ''">
-                    u.name=#{name}
+                    u.name=#{name},
                 </if>
                 <if test="emailAd != null and emailAd != ''">
-                    c.email_ad_flag=#{emailAd}
+                    c.email_ad_flag=#{emailAd},
                 </if>
                 <if test="phoneAd != null and phoneAd != ''">
-                    c.phone_ad_flag=#{phoneAd}
+                    c.phone_ad_flag=#{phoneAd},
                 </if>
             </set>
-        where u.user_id=#{userId} and c.user_id
+        where u.user_id=#{userId} and c.user_id=#{userId}
     </update>
 
     <delete id="deleteUser" parameterType="com.ecommerce.server.dto.UserDto$unregisterDto">
