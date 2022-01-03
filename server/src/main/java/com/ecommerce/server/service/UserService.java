@@ -30,8 +30,29 @@ public class UserService {
         }
     }
 
+    public boolean modifyPassword(UserDto.modifyPassword dto){
+        UserDto.modifyPassword user = UserDto.modifyPassword.builder()
+                .userId(SecurityUtil.getCurrentMemberId())
+                .currentPassword(dto.getCurrentPassword())
+                .nextPassword(dto.getNextPassword())
+                .confirmPassword(dto.getConfirmPassword())
+                .build();
+        if(dto.getNextPassword().equals(dto.getConfirmPassword())){
+            if(userDao.modifyPassword(user) > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
     public boolean unregister(UserDto.unregisterDto dto){
-        UserDto.unregisterDto user = UserDto.unregisterDto.builder().userId(SecurityUtil.getCurrentMemberId()).password(dto.getPassword()).build();
+        UserDto.unregisterDto user = UserDto.unregisterDto.builder()
+                .userId(SecurityUtil.getCurrentMemberId())
+                .password(dto.getPassword())
+                .build();
 
         if(userDao.deleteUser(user) > 0) {
             return true;

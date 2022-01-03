@@ -40,6 +40,18 @@ public class UserDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
+    public static class modifyPassword{
+        private long userId;
+        private String currentPassword;
+        private String nextPassword;
+        private String confirmPassword;
+    }
+
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class unregisterDto{
         private long userId;
         private String password;

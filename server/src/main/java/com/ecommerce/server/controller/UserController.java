@@ -23,6 +23,11 @@ public class UserController {
         return ResponseEntity.ok().body(userService.modifyProfile(dto));
     }
 
+    @PostMapping("/modify-password")
+    public ResponseEntity<?> modifyProfile(@RequestBody UserDto.modifyPassword dto) throws Exception{
+        return ResponseEntity.ok().body(userService.modifyPassword(dto));
+    }
+
     @PostMapping("/unregister")
     public ResponseEntity<?> unregister(@RequestBody UserDto.unregisterDto dto) throws Exception{
         return ResponseEntity.ok().body(userService.unregister(dto));

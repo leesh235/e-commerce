@@ -40,6 +40,16 @@
         where u.user_id=#{userId} and c.user_id=#{userId}
     </update>
 
+    <update id="modifyPassword" parameterType="com.ecommerce.server.dto.UserDto$modifyPassword">
+        update users
+        <set>
+            <if test="name != null and name != ''">
+                password=#{nextPassword},
+            </if>
+        </set>
+        where user_id=#{userId} and password=#{currentPassword}
+    </update>
+
     <delete id="deleteUser" parameterType="com.ecommerce.server.dto.UserDto$unregisterDto">
         delete from users where user_id=#{userId} and password=#{password}
     </delete>
