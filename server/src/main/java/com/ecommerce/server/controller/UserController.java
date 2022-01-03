@@ -18,15 +18,20 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getProfile());
     }
 
+    @PostMapping("/confirm-user")
+    public ResponseEntity<?> modifyProfile(@RequestBody UserDto.confirmUserDto dto) throws Exception{
+        return ResponseEntity.ok().body(userService.confirmUser(dto));
+    }
+
     @PostMapping("/modify-profile")
     public ResponseEntity<?> modifyProfile(@RequestBody UserDto.modifyProfileDto dto) throws Exception{
         return ResponseEntity.ok().body(userService.modifyProfile(dto));
     }
 
-    @PostMapping("/confirm-user")
-    public ResponseEntity<?> modifyProfile(@RequestBody UserDto.confirmUser dto) throws Exception{
-        return ResponseEntity.ok().body(userService.confirmUser(dto));
-    }
+//    @PostMapping("/modify-phone")
+//    public ResponseEntity<?> modifyPhone(@RequestBody String phone) throws Exception{
+//        return ResponseEntity.ok().body("");
+//    }
 
     @PostMapping("/unregister")
     public ResponseEntity<?> unregister(@RequestBody UserDto.unregisterDto dto) throws Exception{

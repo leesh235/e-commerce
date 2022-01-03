@@ -16,6 +16,19 @@ public class UserService {
         return userDao.findUser(SecurityUtil.getCurrentMemberId());
     }
 
+    public boolean confirmUser(UserDto.confirmUserDto dto){
+        UserDto.confirmUserDto user = UserDto.confirmUserDto.builder()
+                .userId(SecurityUtil.getCurrentMemberId())
+                .password(dto.getPassword())
+                .build();
+
+        if(userDao.confirmPassword(user) == SecurityUtil.getCurrentMemberId()) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public boolean modifyProfile(UserDto.modifyProfileDto dto){
         UserDto.modifyProfileDto user = UserDto.modifyProfileDto.builder()
                 .userId(SecurityUtil.getCurrentMemberId())
@@ -32,19 +45,6 @@ public class UserService {
             }else{
                 return false;
             }
-        }else{
-            return false;
-        }
-    }
-
-    public boolean confirmUser(UserDto.confirmUser dto){
-        UserDto.confirmUser user = UserDto.confirmUser.builder()
-                .userId(SecurityUtil.getCurrentMemberId())
-                .password(dto.getPassword())
-                .build();
-
-        if(userDao.confirmPassword(user) == SecurityUtil.getCurrentMemberId()) {
-            return true;
         }else{
             return false;
         }

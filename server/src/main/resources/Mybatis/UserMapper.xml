@@ -43,7 +43,7 @@
         where u.user_id=#{userId} and c.user_id=#{userId}
     </update>
 
-    <select id="confirmPassword" parameterType="com.ecommerce.server.dto.UserDto$modifyPassword" resultType="integer">
+    <select id="confirmPassword" parameterType="com.ecommerce.server.dto.UserDto$confirmUserDto" resultType="integer">
         select user_id from users where user_id=#{userId} and password=#{password}
     </select>
 
