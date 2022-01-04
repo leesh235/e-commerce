@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ecommerce.server.dao.UserDao">
+<mapper namespace="com.ecommerce.server.dao.PurchaseDao">
     <select id="findUser" parameterType="_long" resultType="com.ecommerce.server.dto.UserDto$profileDto">
         select
         u.email,
