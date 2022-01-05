@@ -17,6 +17,9 @@ public interface PostDetailDao {
     //게시글 작성
     int save(PostDetailDto.writeDto dto);
 
+    //옵션 작성
+    int saveOption(PostDetailDto.writeDto dto);
+
     //게시글 수정
     int modify(PostDetailDto.modifyDto dto);
 
