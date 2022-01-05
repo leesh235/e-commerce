@@ -12,6 +12,7 @@ public class PostOptionDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class createPostOptionDto{
+        private long postId;
         private String optionName;
         private long optionPrice;
         private long optionAmount;
