@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 public class PostDetailDto {
 
@@ -22,12 +23,20 @@ public class PostDetailDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class postResponseDto{
-        private String title;
+        private long postId;
+        private String category;
+        private String name;
         private String writer;
         private Date createdDate;
         private String postUrl;
-        private long commentCnt;
-        private long likeCnt;
+        private long price;
+        private long amount;
+        private long commentQuantity;
+        private long qnaQuantity;
+        private long likeQuantity;
+        private long purchaseQuantity;
+        private String term;
+        private List<PostOptionDto.getPostOptionDto> postOptionList;
     }
 
     @Getter
@@ -36,11 +45,15 @@ public class PostDetailDto {
     @AllArgsConstructor
     public static class writeDto{
         private long postId;
+        private long userId;
         private String title;
         private String category;
-        private long userId;
         private String writer;
         private String postUrl;
+        private long price;
+        private long amount;
+        private String term;
+        private List<PostOptionDto.createPostOptionDto> postOptionList;
     }
 
     @Getter
