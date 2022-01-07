@@ -22,8 +22,7 @@ public class PostDetailController {
 
     @PostMapping("/write")
     public ResponseEntity<?> write(@RequestBody PostDetailDto.writeDto dto){
-        postDetailService.writePost(dto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(postDetailService.writePost(dto));
     }
 
     @PostMapping("/modify")

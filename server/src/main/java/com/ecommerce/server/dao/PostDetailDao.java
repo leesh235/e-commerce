@@ -1,8 +1,11 @@
 package com.ecommerce.server.dao;
 
 import com.ecommerce.server.dto.PostDetailDto;
+import com.ecommerce.server.dto.PostOptionDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Mapper
 @Repository
@@ -14,11 +17,13 @@ public interface PostDetailDao {
     //게시글 불러오기
     PostDetailDto.postResponseDto findId(long postId);
 
+    List<PostOptionDto.getPostOptionDto> findOptionId(long postId);
+
     //게시글 작성
     int save(PostDetailDto.writeDto dto);
 
     //옵션 작성
-    int saveOption(PostDetailDto.writeDto dto);
+    int saveOption(List<PostOptionDto.createPostOptionDto> dto);
 
     //게시글 수정
     int modify(PostDetailDto.modifyDto dto);

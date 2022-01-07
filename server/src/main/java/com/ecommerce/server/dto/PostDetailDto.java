@@ -25,16 +25,16 @@ public class PostDetailDto {
     public static class postResponseDto{
         private long postId;
         private String category;
-        private String name;
-        private String writer;
+        private String title;
+//        private String writer;
         private Date createdDate;
         private String postUrl;
         private long price;
         private long amount;
-        private long commentQuantity;
-        private long qnaQuantity;
-        private long likeQuantity;
-        private long purchaseQuantity;
+//        private long commentQuantity;
+//        private long qnaQuantity;
+//        private long likeQuantity;
+//        private long purchaseQuantity;
         private String term;
         private List<PostOptionDto.getPostOptionDto> postOptionList;
     }
@@ -48,7 +48,6 @@ public class PostDetailDto {
         private long userId;
         private String title;
         private String category;
-        private String writer;
         private String postUrl;
         private long price;
         private long amount;
