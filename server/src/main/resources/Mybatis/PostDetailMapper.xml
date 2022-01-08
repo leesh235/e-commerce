@@ -9,14 +9,20 @@
 
     <select id="findId" parameterType="_long" resultType="com.ecommerce.server.dto.PostDetailDto$postResponseDto">
         select
-            name as title,
+            title,
             url as postUrl,
             create_date as createdDate,
             seller_user_id as sellerId,
             category_id as category,
             price,
             amount,
-            term
+            start_date as startDate,
+            end_date as endDate,
+            hits,
+            discount,
+            subtitle,
+            explanation,
+            thumbnail,
         from product where product_id=#{postId}
     </select>
 
@@ -30,8 +36,8 @@
     </select>
 
     <insert id="save" parameterType="com.ecommerce.server.dto.PostDetailDto$writeDto">
-        insert into product(name, category_id, seller_user_id, url, price, amount, term, create_date)
-        value(#{title}, #{category}, #{userId}, #{postUrl}, #{price}, #{amount}, #{term}, now())
+        insert into product(title, category_id, seller_user_id, url, price, amount, start_date, end_date, subtitle, thumbnail, explanation)
+        value(#{title}, #{category}, #{userId}, #{postUrl}, #{price}, #{amount}, #{startDate}, #{endDate}, #{subtitle}, #{thumbnail}, #{explanation})
         <selectKey keyProperty="postId" resultType="int" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
